@@ -8,14 +8,14 @@
   <meta property="og:title" content="GlyphGuard" />
   <meta id="metaOgDescription" property="og:description" content="Check links before opening. Download GlyphGuard." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4" />
+  <meta property="og:image" content="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta id="metaTwitterDescription" name="twitter:description" content="Check links before opening. Download GlyphGuard." />
-  <meta name="twitter:image" content="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4" />
+  <meta name="twitter:image" content="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5" />
   <meta name="theme-color" content="#0f1629" />
-  <link id="faviconPng" rel="icon" type="image/png" href="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4" />
-  <link id="shortcutFavicon" rel="shortcut icon" type="image/png" href="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4" />
-  <link id="appleTouchIcon" rel="apple-touch-icon" href="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4" />
+  <link id="faviconPng" rel="icon" type="image/png" href="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5" />
+  <link id="shortcutFavicon" rel="shortcut icon" type="image/png" href="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5" />
+  <link id="appleTouchIcon" rel="apple-touch-icon" href="https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -45,7 +45,7 @@
       background:
         linear-gradient(160deg, rgba(7, 14, 36, 0.9), rgba(5, 10, 26, 0.92)),
         radial-gradient(65vw 65vw at 50% 35%, rgba(38, 205, 255, 0.2) 0%, rgba(38, 205, 255, 0) 72%),
-        url("./Gemini_Generated_Image_c25hqhc25hqhc25h.png") center / cover no-repeat;
+        url("./fon_1024x1024.png") center / cover no-repeat;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -458,9 +458,30 @@
 
     .footer {
       text-align: center;
-      margin-top: 16px;
+      margin-top: 20px;
       color: rgba(226, 232, 255, 0.72);
       font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 16px;
+      margin-top: 8px;
+    }
+
+    .footer-link {
+      color: rgba(247, 198, 78, 0.75);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: color 0.16s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--gold-2);
     }
 
     @media (min-width: 780px) {
@@ -486,7 +507,7 @@
         </label>
       </div>
 
-      <img class="logo" id="logoImage" src="./icon.png" alt="GlyphGuard app icon" onerror="if (this.dataset.fallback !== '1') { this.dataset.fallback = '1'; this.src='./adaptive-icon.png'; return; } if (this.dataset.fallback !== '2') { this.dataset.fallback = '2'; this.src='https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4'; return; } this.onerror=null;" />
+      <img class="logo" id="logoImage" src="./icon-512.png" alt="GlyphGuard app icon" onerror="if (this.dataset.fallback !== '1') { this.dataset.fallback = '1'; this.src='https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5'; return; } this.onerror=null;" />
       <h1 data-i18n="title">GlyphGuard</h1>
       <p class="subtitle" data-i18n="subtitle"></p>
 
@@ -646,7 +667,14 @@
       </div>
     </section>
 
-    <p class="footer" data-i18n="footer"></p>
+    <footer class="footer">
+      <p data-i18n="footer"></p>
+      <div class="footer-links">
+        <a class="footer-link" href="./privacy-policy.html" id="privacyPolicyLink" data-i18n="privacyPolicy">Privacy Policy</a>
+        <a class="footer-link" href="mailto:glyphguard.app@gmail.com" data-i18n="contactUs">Write to developer</a>
+        <a class="footer-link" href="#" id="donateFooterLink" target="_blank" rel="noopener noreferrer" data-i18n="donate">Support / Donate</a>
+      </div>
+    </footer>
   </main>
 
   <script>
@@ -657,6 +685,7 @@
       moreApps: "https://github.com/glyphguardapp-ctrl",
       donate: "mailto:glyphguard.app@gmail.com?subject=GlyphGuard%20Support"
     };
+    const SERVICE_LINKS_CONFIG_URL = "https://glyphguard-threat-lookup.glyphguard-app.workers.dev/public/service-links";
 
     const APP_LANGS = ["en", "ru", "uk", "zh", "es", "fr", "ar", "pt", "de", "hi", "ko", "ja", "it", "tr", "id", "vi", "th", "pl", "nl", "sv", "no", "da", "cs", "ro", "hu", "fa", "ms"];
     const RTL_LANGS = new Set(["ar", "fa"]);
@@ -668,8 +697,8 @@
       no: "Norsk", da: "Dansk", cs: "Čeština", ro: "Română", hu: "Magyar", fa: "فارسی", ms: "Bahasa Melayu"
     };
 
-    const LANDING_ICON_LOCAL = "./icon.png";
-    const LANDING_ICON_ABS = "https://glyphguardapp-ctrl.github.io/glyphguard.app/icon.png?v=4";
+    const LANDING_ICON_LOCAL = "./icon-512.png";
+    const LANDING_ICON_ABS = "https://glyphguardapp-ctrl.github.io/glyphguard.app/icon-512.png?v=5";
 
     const EN_COPY = {
       title: "GlyphGuard",
@@ -700,11 +729,15 @@
       langLabel: "Language",
       langAria: "Choose language",
       pageTagline: "Link safety in 2 seconds",
-      footer: "GlyphGuard"
+      footer: "© 2026 GlyphGuard · Voldirex",
+      privacyPolicy: "Privacy Policy",
+      contactUs: "Write to developer"
     };
 
     const LOCALIZED_COPY = {
       ru: {
+        privacyPolicy: "Политика конфиденциальности",
+        contactUs: "Написать разработчику",
         subtitle: "Проверяйте ссылки за 2 секунды до открытия. Защититесь от фишинга и мошеннических страниц.",
         videoTitle: "Посмотрите GlyphGuard в действии",
         appStore: "Скачать в App Store",
@@ -734,6 +767,8 @@
         pageTagline: "Безопасность ссылок за 2 секунды"
       },
       uk: {
+        privacyPolicy: "Політика конфіденційності",
+        contactUs: "Зв'язатися з нами",
         subtitle: "Перевіряйте посилання за 2 секунди перед відкриттям. Захищайтесь від фішингу та шахрайських сторінок.",
         appStore: "Завантажити в App Store",
         googlePlay: "Відкрити в Google Play",
@@ -762,6 +797,8 @@
         pageTagline: "Безпека посилань за 2 секунди"
       },
       zh: {
+        privacyPolicy: "隐私政策",
+        contactUs: "联系我们",
         subtitle: "打开链接前 2 秒完成检测，远离钓鱼和诈骗页面。",
         appStore: "在 App Store 下载",
         googlePlay: "在 Google Play 获取",
@@ -790,6 +827,8 @@
         pageTagline: "2 秒完成链接安全检测"
       },
       es: {
+        privacyPolicy: "Política de privacidad",
+        contactUs: "Contáctenos",
         subtitle: "Revisa enlaces en 2 segundos antes de abrirlos. Mantente a salvo de phishing y fraudes.",
         appStore: "Descargar en App Store",
         googlePlay: "Obtener en Google Play",
@@ -818,6 +857,8 @@
         pageTagline: "Seguridad de enlaces en 2 segundos"
       },
       fr: {
+        privacyPolicy: "Politique de confidentialité",
+        contactUs: "Nous contacter",
         subtitle: "Vérifiez les liens en 2 secondes avant ouverture. Restez à l'abri du phishing et des arnaques.",
         appStore: "Télécharger sur App Store",
         googlePlay: "Disponible sur Google Play",
@@ -846,6 +887,8 @@
         pageTagline: "Sécurité des liens en 2 secondes"
       },
       ar: {
+        privacyPolicy: "سياسة الخصوصية",
+        contactUs: "اتصل بنا",
         subtitle: "افحص الروابط خلال ثانيتين قبل فتحها واحمِ نفسك من التصيد والاحتيال.",
         appStore: "حمّل من App Store",
         googlePlay: "احصل عليه من Google Play",
@@ -874,6 +917,8 @@
         pageTagline: "أمان الروابط خلال ثانيتين"
       },
       pt: {
+        privacyPolicy: "Política de privacidade",
+        contactUs: "Contate-nos",
         subtitle: "Verifique links em 2 segundos antes de abrir. Fique seguro contra phishing e golpes.",
         appStore: "Baixar na App Store",
         googlePlay: "Obter no Google Play",
@@ -902,6 +947,8 @@
         pageTagline: "Segurança de links em 2 segundos"
       },
       de: {
+        privacyPolicy: "Datenschutzerklärung",
+        contactUs: "Kontakt",
         subtitle: "Prüfe Links in 2 Sekunden vor dem Öffnen. Schütze dich vor Phishing und Betrug.",
         appStore: "Im App Store laden",
         googlePlay: "Bei Google Play holen",
@@ -958,6 +1005,8 @@
         pageTagline: "2 सेकंड में लिंक सुरक्षा"
       },
       ko: {
+        privacyPolicy: "개인정보 처리방침",
+        contactUs: "문의하기",
         subtitle: "링크를 열기 전에 2초 만에 검사하세요. 피싱과 사기 페이지로부터 안전을 지키세요.",
         appStore: "App Store에서 다운로드",
         googlePlay: "Google Play에서 받기",
@@ -986,6 +1035,8 @@
         pageTagline: "2초 링크 보안"
       },
       ja: {
+        privacyPolicy: "プライバシーポリシー",
+        contactUs: "お問い合わせ",
         subtitle: "リンクを開く前に2秒でチェック。フィッシングや詐欺ページから身を守ります。",
         appStore: "App Storeでダウンロード",
         googlePlay: "Google Playで入手",
@@ -1441,7 +1492,7 @@
         ...EN_COPY,
         ...localized,
         title: "GlyphGuard",
-        footer: "GlyphGuard"
+        footer: "© 2026 GlyphGuard · Voldirex"
       };
       return acc;
     }, { en: EN_COPY });
@@ -1463,12 +1514,32 @@
       return normalizeLang(navigator.language || "en");
     }
 
-    function setHref(id, value) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.href = value;
-      const isPlaceholder = typeof value === "string" && value.includes("YOUR_");
-      el.classList.toggle("disabled", isPlaceholder);
+    function setHref(id, href) {
+      const node = document.getElementById(id);
+      if (!node) return;
+      node.href = href;
+      const isPlaceholder = typeof href === "string" && href.includes("YOUR_");
+      node.classList.toggle("disabled", isPlaceholder);
+    }
+
+    async function applyRemoteServiceLinks() {
+      const endpoint = String(SERVICE_LINKS_CONFIG_URL || "").trim();
+      if (!endpoint) return;
+
+      try {
+        const response = await fetch(endpoint, { method: "GET", headers: { accept: "application/json" } });
+        if (!response.ok) return;
+        const payload = await response.json().catch(() => null);
+        const remoteLinks = payload && payload.links && typeof payload.links === "object" ? payload.links : null;
+        if (!remoteLinks) return;
+
+        for (const key of Object.keys(STORE_LINKS)) {
+          const remoteValue = String(remoteLinks[key] || "").trim();
+          if (remoteValue) STORE_LINKS[key] = remoteValue;
+        }
+      } catch {
+        // keep local fallback links when remote config is unavailable
+      }
     }
 
     function setMetaContent(id, value) {
@@ -1678,17 +1749,22 @@
       startAuto();
     }
 
-    setHref("appStoreLink", STORE_LINKS.appStore);
-    setHref("googlePlayLink", STORE_LINKS.googlePlay);
-    setHref("appGalleryLink", STORE_LINKS.appGallery);
-    setHref("moreAppsLink", STORE_LINKS.moreApps);
-    setHref("donateLink", STORE_LINKS.donate);
+    (async () => {
+      await applyRemoteServiceLinks();
 
-    const selected = detectLang();
-    applyLandingIconTargets();
-    buildLangSelector(selected);
-    applyLang(selected);
-    initGalleryCarousel();
+      setHref("appStoreLink", STORE_LINKS.appStore);
+      setHref("googlePlayLink", STORE_LINKS.googlePlay);
+      setHref("appGalleryLink", STORE_LINKS.appGallery);
+      setHref("moreAppsLink", STORE_LINKS.moreApps);
+      setHref("donateLink", STORE_LINKS.donate);
+      setHref("donateFooterLink", STORE_LINKS.donate);
+
+      const selected = detectLang();
+      applyLandingIconTargets();
+      buildLangSelector(selected);
+      applyLang(selected);
+      initGalleryCarousel();
+    })();
   </script>
 </body>
 </html>
