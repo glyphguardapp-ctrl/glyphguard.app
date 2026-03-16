@@ -680,10 +680,11 @@
   <script>
     const STORE_LINKS = {
       appStore: "https://apps.apple.com/app/glyphguard/id6740001394",
-      googlePlay: "YOUR_GOOGLE_PLAY_URL",
-      appGallery: "YOUR_APPGALLERY_URL",
+      googlePlay: "",
+      appGallery: "",
       moreApps: "https://github.com/glyphguardapp-ctrl",
-      donate: "mailto:glyphguard.app@gmail.com?subject=GlyphGuard%20Support"
+      donate: "mailto:glyphguard.app@gmail.com?subject=GlyphGuard%20Support",
+      privacyPolicy: "https://docs.google.com/document/d/1FBk5u0gWrLRw8Td5uDySeHvomkLmElonlIJVVXLsg28/edit?usp=share_link"
     };
     const SERVICE_LINKS_CONFIG_URL = "https://glyphguard-threat-lookup.glyphguard-app.workers.dev/public/service-links";
 
@@ -1758,6 +1759,7 @@
       setHref("moreAppsLink", STORE_LINKS.moreApps);
       setHref("donateLink", STORE_LINKS.donate);
       setHref("donateFooterLink", STORE_LINKS.donate);
+      setHref("privacyPolicyLink", STORE_LINKS.privacyPolicy);
 
       const selected = detectLang();
       applyLandingIconTargets();
