@@ -734,11 +734,89 @@
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
+  
+    /* --- PREMIUM REDESIGN INJECTIONS --- */
+    body {
+      background: linear-gradient(135deg, #090c14, #12182b, #090c14);
+      background-attachment: fixed;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    
+    h1, h2, h3 {
+      background: linear-gradient(to right, #f7c64e, #fff, #f7c64e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 4px 20px rgba(247, 198, 78, 0.2);
+    }
+    
+    .card, .faq-container {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+      border-radius: var(--radius, 18px);
+    }
+    
+    .card:hover, .faq-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 60px -15px rgba(247, 198, 78, 0.2);
+      border-color: rgba(247, 198, 78, 0.3);
+    }
+
+    button, .store-button {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    button::after, .store-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(transparent, rgba(255,255,255,0.15), transparent);
+      transform: rotate(45deg) translateY(-100%);
+      transition: all 0.6s ease;
+    }
+    
+    button:hover::after, .store-button:hover::after {
+      transform: rotate(45deg) translateY(100%);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes floatDrop {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .animate-up {
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    
+    .hero-icon {
+      animation: floatDrop 6s ease-in-out infinite;
+    }
+
   </style>
 </head>
 <body>
   <main class="page">
-    <section class="hero">
+    <section class="hero animate-up">
       <div class="hero-lang">
         <label class="lang-picker" for="langSelect" title="Language">
           <span id="langNameBadge" class="lang-name" aria-hidden="true">English</span>
@@ -783,7 +861,7 @@
       <div class="hint" data-i18n="storeHint"></div>
     </section>
 
-    <section class="panel gallery">
+    <section class="panel gallery animate-up">
       <div class="gallery-head">
         <h2 data-i18n="galleryTitle"></h2>
         <p class="muted" data-i18n="gallerySubtitle"></p>
@@ -860,7 +938,7 @@
       </div>
     </section>
 
-    <section class="grid">
+    <section class="grid animate-up">
       <article class="panel span6">
         <h2 data-i18n="whyTitle"></h2>
         <ul class="features">
@@ -887,7 +965,7 @@
       </article>
     </section>
 
-    <section class="grid">
+    <section class="grid animate-up">
       <article class="panel span6">
         <h2 data-i18n="factsTitle"></h2>
         <p class="muted" data-i18n="factsSubtitle"></p>
@@ -924,7 +1002,7 @@
       </article>
     </section>
 
-    <section class="panel faq-panel">
+    <section class="panel faq-panel animate-up">
       <h2 data-i18n="faqTitle"></h2>
       <p class="muted" data-i18n="faqSubtitle"></p>
       <div class="faq-list">
@@ -2253,5 +2331,22 @@
       initGalleryCarousel();
     })();
   </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll('.animate-up, .card, .faq-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, idx) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-up');
+            entry.target.style.animationDelay = (idx * 0.1) + 's';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      elements.forEach(c => observer.observe(c));
+    });
+  </script>
 </body>
+
 </html>
