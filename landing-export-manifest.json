@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-03-28T11:58:39.424Z",
+  "sourceRoot": "/Users/mac/Documents/myProject/3337/GlyphGuard",
+  "outputDir": "/Users/mac/Documents/myProject/3337/GlyphGuard/dist/public-landing",
+  "requiredEntries": [
+    {
+      "source": "landing/github-pages/index.html",
+      "destination": "index.html"
+    },
+    {
+      "source": "landing/github-pages/privacy-policy.html",
+      "destination": "privacy-policy.html"
+    },
+    {
+      "source": "landing/github-pages/llms.txt",
+      "destination": "llms.txt"
+    },
+    {
+      "source": "landing/github-pages/robots.txt",
+      "destination": "robots.txt"
+    },
+    {
+      "source": "landing/github-pages/sitemap.xml",
+      "destination": "sitemap.xml"
+    },
+    {
+      "source": "adaptive-icon.png",
+      "destination": "adaptive-icon.png"
+    },
+    {
+      "source": "bg-1024.png",
+      "destination": "bg-1024.png"
+    },
+    {
+      "source": "fon_1024x1024.png",
+      "destination": "fon_1024x1024.png"
+    },
+    {
+      "source": "icon-512.png",
+      "destination": "icon-512.png"
+    },
+    {
+      "source": "icon.png",
+      "destination": "icon.png"
+    },
+    {
+      "source": "landing/store-buttons.html",
+      "destination": "store-buttons.html"
+    },
+    {
+      "source": "landing/store-buttons-en.html",
+      "destination": "store-buttons-en.html"
+    }
+  ],
+  "optionalEntries": [
+    {
+      "relativePath": "gallery",
+      "status": "copied"
+    }
+  ]
+}
